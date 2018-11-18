@@ -1,0 +1,11 @@
+<apex:page controller="sfdc">
+    
+  <apex:form >  
+  <apex:inputText value="{!id}" />
+  <apex:outputtext value="{!Output}" />
+  <apex:commandButton action="{!calc}" title="calc" />
+  </apex:form>
+
+
+
+</apex:page>

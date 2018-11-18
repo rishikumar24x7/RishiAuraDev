@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AuthProvider xmlns="http://soap.sforce.com/2006/04/metadata">
+    <authorizeUrl>https://accounts.google.com/o/oauth2/auth</authorizeUrl>
+    <consumerKey>4879704061-9406buq4jskln7vrbh2p8lb8b7h6si3u.apps.googleusercontent.com</consumerKey>
+    <consumerSecret>Y2Vd7WQho/K2y1DmhZi//cP7ZW8QL7b0cEEY92ILatc=</consumerSecret>
+    <defaultScopes>email</defaultScopes>
+    <executionUser>rishi.kumar@saasfocus.com</executionUser>
+    <friendlyName>Google</friendlyName>
+    <iconUrl>http://vignette2.wikia.nocookie.net/logopedia/images/d/d2/Google_icon_2015.png/revision/latest?cb=20150902024016</iconUrl>
+    <includeOrgIdInIdentifier>false</includeOrgIdInIdentifier>
+    <providerType>OpenIdConnect</providerType>
+    <registrationHandler>GoogleAppsRegistrationHandler</registrationHandler>
+    <sendAccessTokenInHeader>true</sendAccessTokenInHeader>
+    <sendClientCredentialsInHeader>false</sendClientCredentialsInHeader>
+    <tokenUrl>https://accounts.google.com/o/oauth2/token</tokenUrl>
+    <userInfoUrl>https://www.googleapis.com/oauth2/v3/userinfo</userInfoUrl>
+</AuthProvider>

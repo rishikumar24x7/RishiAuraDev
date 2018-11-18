@@ -1,0 +1,17 @@
+<apex:page tabStyle="Skill__c" controller="SkillController" label="Skill Matrix" sidebar="false"> 
+<Strong style="font-weight :Bold;Font-size :32px;">Skill Matrix</strong>
+<br/>
+ <apex:form >
+   <apex:pageBlock id="pageblock" title="Resource">
+    <apex:pageBlockSection title="Resource name to search">
+     <apex:pageBlockSectionItem >
+       <apex:outputLabel value="Resource first name:"></apex:outputLabel>
+        <apex:inputText value="{!inputName}" label="Resource Name"/>
+         </apex:pageBlockSectionItem>
+         <apex:pageBlockSectionItem >
+        <apex:commandButton action="{!searchResouceSkills}" value="search"/>
+       </apex:pageBlockSectionItem> 
+    </apex:pageBlockSection>
+   </apex:pageBlock>
+  </apex:form>
+</apex:page>

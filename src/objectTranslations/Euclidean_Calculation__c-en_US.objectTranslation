@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Euclidean Calculation</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Euclidean Calculations</value>
+    </caseValues>
+    <fields>
+        <label><!-- Cordinate 1 --></label>
+        <name>Cordinate1__c</name>
+        <relationshipLabel><!-- Euclidean Calculations --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Cordinate 2 --></label>
+        <name>Cordinate2__c</name>
+        <relationshipLabel><!-- Euclidean Calculations (Cordinate 2) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Euclidean Distance --></label>
+        <name>Euclidean_Distance__c</name>
+    </fields>
+    <layouts>
+        <layout>Euclidean Calculation Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

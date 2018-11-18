@@ -1,0 +1,37 @@
+<apex:page controller="SkillMatrixDynamicController3" tabStyle="Resource__c" sidebar="false">
+<apex:sectionHeader title="Skill Matrix" subtitle="In respect to resource">
+</apex:sectionHeader>
+<apex:messages />
+<apex:form >
+<apex:pageblock id="myPageblock">
+    <apex:pageBlockSection id="Section1" title="Resource Search" collapsible="false">
+        <apex:pageBlockSectionItem >
+            <apex:outputLabel >Resource Name :</apex:outputLabel>
+            <apex:selectList value="{!SelectedResource}" size="1">
+                <apex:selectOptions value="{!ResourceList}"></apex:selectOptions>
+            </apex:selectList>
+             
+        </apex:pageBlockSectionItem>
+        <apex:pageBlockSectionItem >
+            <apex:commandButton action="{!searchResourceSkills}" value="Search" reRender="second"/>
+        </apex:pageBlockSectionItem>
+    </apex:pageBlockSection>
+        
+</apex:pageblock>
+<apex:pageBlock id="second" >
+    <apex:pageBlockTable value="{!lstSkills}" var="skill" rendered="{!IF(size != null, true,false)}">
+        <apex:column value="{!skill.Name}" title="Skill Name"/>
+        <apex:column headerValue="Type"><apex:inputField value="{!skill.Type__c}"/></apex:column>
+        <apex:column headerValue="Rating"><apex:inputField value="{!skill.Rating__c}"/>
+        
+        </apex:column>
+        <apex:column value="{!skill.Notes__c}"/>
+        </apex:pageBlockTable>
+        <apex:pageBlockButtons rendered="{!IF(size != null, true,false)}">
+            <apex:commandButton action="{!Save}" value="Save"/>
+        </apex:pageBlockButtons>
+</apex:pageBlock>
+</apex:form>
+
+  
+</apex:page>

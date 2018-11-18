@@ -1,0 +1,4 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<aura:registerEvent name="SaveEvent" type="c:SaveEvent"/>
+    <ui:button aura:id="button" buttonTitle="Save" class="button" label="Save" press="{!c.fireSaveEvent}"/>
+</aura:component>

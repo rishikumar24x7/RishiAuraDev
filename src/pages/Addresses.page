@@ -1,0 +1,27 @@
+<apex:page extensions="LP_AddressController" standardcontroller="LP_Address__c" applyBodyTag="false" sidebar="false">
+
+ <apex:includescript value="//maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places" />
+    <apex:includescript value="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js" />
+    <apex:includescript value="//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.4/dist/typeahead.bundle.min.js" />
+    <apex:includescript value="//cdnjs.cloudflare.com/ajax/libs/typeahead-addresspicker/0.1.4/typeahead-addresspicker.min.js" />
+<script>
+    debugger;
+var addressPicker = new AddressPicker();
+
+$('#address').typeahead(null, {
+  displayKey: 'description',
+  source: addressPicker.ttAdapter()
+});
+        </script>
+
+    
+  
+    
+    <body>
+        <input id="address" type="text" placeholder="Enter an address"/>
+
+       
+        
+    </body>
+    
+</apex:page>

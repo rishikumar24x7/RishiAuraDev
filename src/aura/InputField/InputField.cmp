@@ -1,0 +1,9 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	
+    <aura:attribute name="objectApi" type="String" default="Lead"/>
+    <aura:attribute name="fieldApi" type="String" default="LastName"/>    
+    <aura:attribute name="inputText" type="string" default="Hello there!"/>       
+    <aura:handler event="c:SaveEvent" action="{!c.handleSaveEvent}"/>
+    
+    <ui:inputText label="Expense Name" value="{!v.inputText}" required="false"/>
+</aura:component>

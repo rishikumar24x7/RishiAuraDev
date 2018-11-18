@@ -1,0 +1,15 @@
+<apex:page Controller="Add_bill" renderAs="pdf">
+  
+  <apex:form >
+      <apex:pageBlock title="Add Bill" >
+          <apex:pageBlockSection columns="1" >
+              <apex:inputField value="{!Bill.Date_Time__c}" />
+              <apex:inputField value="{!Bill.Amount__c}" />
+              <apex:repeat value="{!options}" var="opt">
+              <apex:selectCheckboxes value="{!opt.value}" label="{!opt.label}" />
+              </apex:repeat>
+          <apex:commandButton title="Save" value="Save" action="{!saveBill}"/>    
+          </apex:pageBlockSection>
+      </apex:pageBlock>
+  </apex:form>
+</apex:page>

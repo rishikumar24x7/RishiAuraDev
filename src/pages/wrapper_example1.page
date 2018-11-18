@@ -1,0 +1,22 @@
+<apex:page controller="accountcontact">
+
+
+
+<apex:repeat value="{!accounts}" var="accWrap">
+<apex:outputText value="User ID : {!accWrap.userId}"/>
+
+   <apex:repeat value="{!accWrap.accounts}" var="acc">
+   <apex:outputText value="Account : {!acc.Name}"/>
+
+      <apex:repeat value="{!acc.contacts}" var="cont">
+      
+  <apex:outputText value="Contact : {!cont.Name}"/>
+  
+      </apex:repeat>
+
+   </apex:repeat>
+
+</apex:repeat>
+
+
+</apex:page>

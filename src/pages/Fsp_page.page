@@ -1,0 +1,65 @@
+<apex:page standardController="contact" tabstyle="contact">
+<apex:form >
+    <apex:pageBlock title="New FSP Contact">
+    
+        <apex:pageBlockButtons location="Bottom">
+        <apex:commandButton value="save" action="{!save}"/>
+        </apex:pageBlockButtons>
+        <apex:pageBlockSection Title="Contact Name">
+        <apex:inputField value="{!contact.FirstName}"/>
+        <apex:inputField value="{!contact.lastName}"/>
+        </apex:pageBlockSection>
+        <apex:pageBlockSection Title="Compliance officer">
+        <apex:inputField value="{!contact.CoAccess__c}"/>
+        <apex:inputField value="{!contact.Co_Physical_Address__c}"/>
+        <apex:inputField value="{!contact.Co_Address__c}"/>
+        <apex:inputField value="{!contact.Co_City__c}"/>
+        <apex:inputField value="{!contact.Co_Code__c}"/>
+        <apex:inputField value="{!contact.Co_Company_Name__c}"/>
+        <apex:inputField value="{!contact.Co_Email__c}"/>
+        <apex:inputField value="{!contact.Co_Id_Number__c}"/>
+        <apex:inputField value="{!contact.Co_Fax_Number__c}"/>
+        <apex:inputField value="{!contact.Co_List_Of_Products__c}"/>
+        </apex:pageBlockSection>
+        
+        <apex:pageBlockSection Title="Compliance User">
+        <apex:inputField value="{!contact.Cu_Activation_Date__c}"/>
+        <apex:inputField value="{!contact.Cu_Add_Line_1__c}"/>
+        <apex:inputField value="{!contact.Cu_Addressing_Title__c}"/>
+        <apex:inputField value="{!contact.Cu_Contact_Alternative_Email_address__c}"/>
+        <apex:inputField value="{!contact.Cu_Anniversary_Date__c}"/>
+        <apex:inputField value="{!contact.Cu_Client_Number__c}"/>
+        <apex:inputField value="{!contact.Cu_Contact_Correspondence_Email_Address__c}"/>
+        <apex:inputField value="{!contact.Cu_Correspondence_Language__c}"/>
+        <apex:inputField value="{!contact.Cu_Contact_Fax_Home__c}"/>
+        <apex:inputField value="{!contact.Cu_Contact_Fax__c}"/>
+        </apex:pageBlockSection>
+        
+        <apex:pageBlockSection Title="Key Personal">
+        <apex:inputField value="{!contact.Ki_BR_Number__c}"/>
+        <apex:inputField value="{!contact.Ki_Catagory__c}"/>
+        <apex:inputField value="{!contact.Ki_Contact_Person_for_the_FSB__c}"/>
+        <apex:inputField value="{!contact.Ki_Email_Address__c}"/>
+        <apex:inputField value="{!contact.Ki_Employement_Status__c}"/>
+        <apex:inputField value="{!contact.Ki_HC_License_Expiry_Renewal_Date__c}"/>
+        <apex:inputField value="{!contact.Ki_ID_Number__c}"/>
+        <apex:inputField value="{!contact.Ki_Language__c}"/>
+        </apex:pageBlockSection>
+        
+        <apex:pageBlockSection Title="PM Section">
+        <apex:inputField value="{!contact.Pm_City__c}"/>
+        <apex:inputField value="{!contact.Pm_Code__c}"/>
+        <apex:inputField value="{!contact.Pm_Conatct_Fax_Work__c}"/>
+        <apex:inputField value="{!contact.Pm_Contact_Alt_Email__c}"/>
+        <apex:inputField value="{!contact.Pm_Contact_Fax_Home__c}"/>
+        <apex:inputField value="{!contact.Pm_Contact_Mobile_Alternate__c}"/>
+        <apex:inputField value="{!contact.pm_Contact_Mobile_Own__c}"/>
+        <apex:inputField value="{!contact.Pm_Contact_Telephone_home__c}"/>
+        <apex:inputField value="{!contact.Pm_Contact_Telephone_Work__c}"/>
+        <apex:inputField value="{!contact.Pm_Suburb__c}"/>
+        </apex:pageBlockSection>
+        
+    </apex:pageBlock>
+</apex:form>
+  
+</apex:page>

@@ -1,0 +1,9 @@
+<apex:page sidebar="false" showHeader="false" standardController="account">
+<body>
+<apex:form id="QrForm" >
+<apex:inputtext id="getQr" style="width:80%;display:none;" value="{!account.website}"/> <br/> 
+<div id="qrcode" style="width:100px; height:100px; margin-top:15px;"></div>
+ <c:QrCode myValue="{!account.website}" /> 
+</apex:form>
+</body>
+</apex:page>

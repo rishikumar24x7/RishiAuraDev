@@ -1,0 +1,14 @@
+<apex:page controller="leadLookupController">
+<apex:form >
+    <apex:outputLabel value="Email" />: 
+    <apex:inputText value="{!emailString}" /><br/>
+    <apex:outputLabel value="Street" />: 
+    <apex:inputText value="{!Lead.street}" /><br/>
+    <apex:outputLabel value="City" />: 
+    <apex:inputText value="{!Lead.city}" /><br/>
+    <apex:outputLabel value="State" />: 
+    <apex:inputText value="{!Lead.state}" /><br/>
+    <apex:outputLabel value="Zip" />: 
+    <apex:inputText value="{!Lead.postalcode}" /><br/>
+</apex:form>
+</apex:page>

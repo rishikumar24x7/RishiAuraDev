@@ -1,0 +1,242 @@
+<apex:page >
+ <div id="main">
+<div id="game-header">
+<h3>Welcome to the Monty Hall Game!</h3>
+<div id="game-steps">
+<div id="step1">1. Pick a door <span class="details">(Monty reveals goats)</span></div>
+<div id="step2">2. Stay or switch?<span class="details">(Click the door you want)</span></div>
+<div id="step3">3. See results!<span class="details">(Click door for another game)</span></div>
+</div>
+</div>
+<div>
+<div id="statusarea">
+<div>Doors:<input text="3" type="text" name="doors" id="doors" value="3"/>
+<a href="javascript:SetupGame();" id="reset">reset</a>
+</div>
+<b>Stats:</b> <span id="stats"></span>
+</div>
+</div>
+<div class="clear">
+</div>
+<div id="game-wrapper">
+<div id="game-area"><div id="door_0" class="door">Door <br/>1</div><div id="door_1" class="door">Door <br/>2</div><div id="door_2" class="door">Door <br/>3</div><div class="clear"></div></div>
+</div>
+<script>
+function newGame(doors){
+  var game = {};
+  game.doors = [];
+  game.prizedoor = Math.floor(Math.random() * doors);
+
+  for(var i = 0; i < doors; i++){
+    var door = newDoor( i == game.prizedoor );
+    door.index = i;
+    game.doors.push(door);
+  }
+ 
+  game.playerdoor = -1;
+  game.state = GAME_STARTED;
+
+  return game;
+}
+
+function PlayerWon(game){
+  return game.doors[game.playerdoor].isprize;
+}
+
+function NonUserDoors(doors){
+  return $.grep(doors, function(door){
+    return door.isplayerdoor == false;
+  }); 
+}
+
+function NonPrizeDoors(doors){
+  return $.grep(doors, function(door){
+    return door.isprize == false;
+  }); 
+}
+
+function PickDoor(game, i){
+  if (game.playerdoor >= 0){
+     game.playerdoor.isplayerdoor = false;
+  }
+
+  game.playerdoor = i;
+  game.doors[i].isplayerdoor = true;
+}
+
+function RevealDoor(door){
+  door.visible = true; 
+}
+
+function RevealAllDoors(doors){
+  $.each(doors, function(i, door){
+    RevealDoor(door); 
+  });
+}
+
+// https://github.com/coolaj86/knuth-shuffle
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex ;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+
+function MontyReveal(game){
+  var otherDoors = NonUserDoors(game.doors);
+
+  // randomize the doors to reveal.
+  shuffle(otherDoors);
+
+  var doorsToReveal = NonPrizeDoors(otherDoors);
+
+  // make sure we don't reveal all the doors 
+  if (doorsToReveal.length == otherDoors.length){
+    doorsToReveal = doorsToReveal.slice(0, doorsToReveal.length - 1);
+  }
+
+  RevealAllDoors(doorsToReveal);
+}
+
+function newDoor(isprize){
+  var door = {};
+  door.isprize = isprize;
+  door.isplayerdoor = false; 
+  door.visible = false;
+  return door;
+}
+
+function getDoors(){
+  return $("#doors").val();
+}
+
+function renderDoor(door){
+  var el = $(document.createElement("div"));
+  $(el).attr("id", "door_" + door.index);
+  $(el).addClass("door"); 
+  $(el).html("Door <br/>" + (door.index + 1));
+  $(el).click( function(){ clickDoor(door.index)});
+
+
+  if (door.isplayerdoor){
+    $(el).addClass("playerdoor");
+    $(el).html("Your door");
+  }
+
+  if (door.visible){
+    $(el).addClass("visible");
+
+    if (door.isprize){
+       $(el).addClass("winningdoor");
+       $(el).html("Car!");
+    }
+    else{
+       $(el).addClass("losingdoor");
+       $(el).html("Goat!");
+    }
+  }
+
+  return el;
+}
+
+function renderGame(game){
+  // clear game area
+  $('#game-area').html("");
+
+  $.each(game.doors, function(i, door){
+    renderDoor(door).appendTo($('#game-area'));
+  });
+  $('#game-area').append("<div class='clear'/>");
+}
+
+// Game stages
+// 1: player picks
+// 2: monty reveals door
+// 3: stay or switch?
+// 4: final reveal of all doors
+
+var GAME_STARTED = 1;
+var GAME_CHOICE = 2;
+var GAME_ENDED = 3;
+
+function setStatus(msg){
+  $('#status').html(msg);
+}
+
+function clickDoor(i){
+  if (game.state == GAME_STARTED){
+    setStatus("Pick a door...");
+  }
+
+  if (game.state == GAME_STARTED){
+    PickDoor(game, i); 
+    MontyReveal(game);
+    game.state = GAME_CHOICE;
+    setStatus("Stay or switch?");
+  }
+  else if (game.state == GAME_CHOICE){
+    PickDoor(game, i);
+    RevealAllDoors(game.doors); 
+    game.state = GAME_ENDED;
+    
+    if (PlayerWon(game)){
+      stats.wins += 1;
+    }
+    else{
+      stats.losses += 1;
+    }
+    
+    renderStats(stats);
+  }
+  else if (game.state == GAME_ENDED){
+    game = newGame(getDoors()); 
+  }
+
+  renderGame(game);
+}
+
+function newStats(){
+  var stats = {};
+  stats.wins = 0;
+  stats.losses = 0;
+  return stats;
+}
+
+function renderStats(stats){
+  var text = "<br/>Wins: " + stats.wins + "<br/> ";
+  text += "Losses: " + stats.losses + "<br/> ";
+
+  var winPct = (stats.wins * 100 / (stats.wins + stats.losses)).toFixed(2);
+  text += "Win %: " + winPct; 
+
+  $("#stats").html(text);
+}
+
+var game;
+var stats;
+
+function SetupGame(){
+  stats = newStats();
+  game = newGame(getDoors());
+  renderGame(game);
+}
+
+SetupGame();
+</script>
+
+
+</div>
+ 
+</apex:page>

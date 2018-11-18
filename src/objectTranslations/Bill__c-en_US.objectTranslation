@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Bill</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Bills</value>
+    </caseValues>
+    <fields>
+        <label><!-- Amount --></label>
+        <name>Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Benificeary --></label>
+        <name>Benificeary__c</name>
+    </fields>
+    <fields>
+        <label><!-- Date Time --></label>
+        <name>Date_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Month Bill --></label>
+        <name>Month_Bill__c</name>
+        <relationshipLabel><!-- Bills --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Purchased Product --></label>
+        <name>Purchased_Product__c</name>
+        <relationshipLabel><!-- Bills --></relationshipLabel>
+    </fields>
+    <layouts>
+        <layout>Bill Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <webLinks>
+        <label><!-- Send_Mail --></label>
+        <name>Send_Mail</name>
+    </webLinks>
+</CustomObjectTranslation>

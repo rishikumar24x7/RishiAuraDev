@@ -1,0 +1,5 @@
+<design:component label="Hello World">
+    <design:attribute name="objectApi" label="object Api" description="" />
+    <design:attribute name="fieldApi" label="Field Api" description="" />
+    
+</design:component>

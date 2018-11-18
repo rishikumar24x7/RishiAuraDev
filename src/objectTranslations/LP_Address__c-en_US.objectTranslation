@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Address</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Addresses</value>
+    </caseValues>
+    <fields>
+        <label><!-- City --></label>
+        <name>LP_City__c</name>
+    </fields>
+    <fields>
+        <label><!-- Full Address --></label>
+        <name>LP_Full_Address__c</name>
+    </fields>
+    <fields>
+        <label><!-- State/Province --></label>
+        <name>LP_State_Province__c</name>
+    </fields>
+    <fields>
+        <help><!-- • Abbreviate the words in the address that indicate direction – North 5th would be N 5th
+• 100 Southeast 200 Northwest would be 100 SE 200 NW
+• Abbreviate street types (St, Ave, Blvd) – Do not include period
+• No periods after abbreviation of name --></help>
+        <label><!-- Street Address --></label>
+        <name>LP_Street_Address__c</name>
+    </fields>
+    <fields>
+        <label><!-- Zip/Postal Code --></label>
+        <name>LP_Zip_Postal_Code__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

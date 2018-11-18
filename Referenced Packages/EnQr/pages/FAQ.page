@@ -1,0 +1,198 @@
+<apex:page standardStylesheets="false" sidebar="false" >
+<html>
+<head>
+<link href="{!URLFOR($Resource.bs, 'bootstrap-3.3.5-dist/css/bootstrap.min.css')}" rel="stylesheet" media="screen"/>
+<apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"/>
+<apex:includeScript value="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"/>
+<script type="text/javascript">
+!function( $ ){
+
+  "use strict"
+
+  var Collapse = function ( element, options ) {
+    this.$element = $(element)
+    this.options = $.extend({}, $.fn.collapse.defaults, options)
+
+    if (this.options["parent"]) {
+      this.$parent = $(this.options["parent"])
+    }
+
+    this.options.toggle && this.toggle()
+  }
+
+  Collapse.prototype = {
+
+    constructor: Collapse
+
+  , dimension: function () {
+      var hasWidth = this.$element.hasClass('width')
+      return hasWidth ? 'width' : 'height'
+    }
+
+  , show: function () {
+      var dimension = this.dimension()
+        , scroll = $.camelCase(['scroll', dimension].join('-'))
+        , actives = this.$parent && this.$parent.find('.in')
+        , hasData
+
+      if (actives && actives.length) {
+        hasData = actives.data('collapse')
+        actives.collapse('hide')
+        hasData || actives.data('collapse', null)
+      }
+
+      this.$element[dimension](0)
+      this.transition('addClass', 'show', 'shown')
+      this.$element[dimension](this.$element[0][scroll])
+
+    }
+
+  , hide: function () {
+      var dimension = this.dimension()
+      this.reset(this.$element[dimension]())
+      this.transition('removeClass', 'hide', 'hidden')
+      this.$element[dimension](0)
+    }
+
+  , reset: function ( size ) {
+      var dimension = this.dimension()
+
+      this.$element
+        .removeClass('collapse')
+        [dimension](size || 'auto')
+        [0].offsetWidth
+
+      this.$element.addClass('collapse')
+    }
+
+  , transition: function ( method, startEvent, completeEvent ) {
+      var that = this
+        , complete = function () {
+            if (startEvent == 'show') that.reset()
+            that.$element.trigger(completeEvent)
+          }
+
+      this.$element
+        .trigger(startEvent)
+        [method]('in')
+
+      $.support.transition && this.$element.hasClass('collapse') ?
+        this.$element.one($.support.transition.end, complete) :
+        complete()
+    }
+
+  , toggle: function () {
+      this[this.$element.hasClass('in') ? 'hide' : 'show']()
+    }
+
+  }
+
+  /* COLLAPSIBLE PLUGIN DEFINITION
+  * ============================== */
+
+  $.fn.collapse = function ( option ) {
+    return this.each(function () {
+      var $this = $(this)
+        , data = $this.data('collapse')
+        , options = typeof option == 'object' && option
+      if (!data) $this.data('collapse', (data = new Collapse(this, options)))
+      if (typeof option == 'string') data[option]()
+    })
+  }
+
+  $.fn.collapse.defaults = {
+    toggle: true
+  }
+
+  $.fn.collapse.Constructor = Collapse
+
+
+ /* COLLAPSIBLE DATA-API
+  * ==================== */
+
+  $(function () {
+    $('body').on('click.collapse.data-api', '[data-toggle=collapse]', function ( e ) {
+      var $this = $(this), href
+        , target = $this.attr('data-target')
+          || e.preventDefault()
+          || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '') //strip for ie7
+        , option = $(target).data('collapse') ? 'toggle' : $this.data()
+      $(target).collapse(option)
+    })
+  })
+
+}( window.jQuery );
+</script>
+</head>
+<body>
+
+<div class="container">
+<div class="well"><h2>Some Frequently Asked Questions</h2></div>
+  <div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Is there any license fee for using ENQr?</a>
+        </h4>
+      </div>
+      <div id="collapse1" class="panel-collapse collapse in">
+        <div class="panel-body">No, as we said before, ENQr is for free, there are no subscription costs. This is tool created for developers to creates QR Codes in salesforce without hassels.</div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Are there any limitations for creating QR Codes?</a>
+        </h4>
+      </div>
+      <div id="collapse2" class="panel-collapse collapse">
+        <div class="panel-body">No, there are absolutely no limitations for creating QR Codes. Subscribers can create as many QR Codes as they want.</div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">What happens if storage limit is reached due to creating excessive number of QR Codes?</a>
+        </h4>
+      </div>
+      <div id="collapse3" class="panel-collapse collapse">
+        <div class="panel-body">That will never happen. QR Codes are created on the fly and are not stored anywhere in Salesforce.</div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">Can I create QR Codes, with phone numbers which directly call from phone, or send email?</a>
+        </h4>
+      </div>
+      <div id="collapse4" class="panel-collapse collapse">
+        <div class="panel-body">Yes, action QR Codes can also be created with ENQr. Although the format of actions has to be specified by user to generate action while scanning the QR Code. </div>
+      </div>
+    </div>
+       <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">Are there any external callouts made for making QR Codes</a>
+        </h4>
+      </div>
+      <div id="collapse5" class="panel-collapse collapse">
+        <div class="panel-body">No, All the QR Codes created by ENQr after installation are created in Salesforce, and no external callouts to applications are made. This improves the efficiency of syste, since we dont rely on external system to make QR Codes. All the application details reside inside Salesforce</div>
+      </div>
+    </div>
+         <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse6">How can I contact ENQr?</a>
+        </h4>
+      </div>
+      <div id="collapse6" class="panel-collapse collapse">
+        <div class="panel-body">You can email your queries at enqr.business@gmail.com, We will be happy to assist.</div>
+      </div>
+    </div>
+  </div> 
+</div>
+    
+</body>
+</html>
+
+</apex:page>

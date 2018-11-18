@@ -1,0 +1,55 @@
+<apex:page standardController="account" extensions="contactaccoun" sidebar="false" action="{!lstacccont}" tabStyle="account" >
+<apex:form >
+<apex:pageBlock >
+
+<apex:pageblockSection title="{!account_name}"></apex:pageblockSection>
+
+ <apex:pageblockTable value="{!lstcontact}" var="c">
+ <apex:column width="80" ><apex:outputLink style="text-decoration:none; color:BLUE;" 
+ onmouseover="changeStyle(this)" onmouseout="removeLine(this)" value="https://ap2.salesforce.com/{!c.id}/e"
+  target="_blank">Edit </apex:outputLink> |<apex:commandLink style="text-decoration:none; color:BLUE;" 
+  onmouseover="changeStyle(this)" onmouseout="removeLine(this)" value="Delete" action="{!contactdel}">
+  <apex:param name="q"  assignTo="{!delid}" value="{!c.id}"/></apex:commandLink>
+  </apex:column>
+  <apex:column value="{!c.lastname}"/>
+   <apex:column value="{!c.firstname}"/>
+   <apex:column value="{!c.email}"/>
+   <apex:column headerValue="select">
+            <apex:inputCheckbox />
+   </apex:column>
+ 
+ </apex:pageblockTable>
+ <apex:pageBlockTable value="{!lstaddcontact}" var="a" id="addtable" >
+ <apex:column width="80"/ >
+  <apex:column width="400"><apex:inputField value="{!a.lastname}"/> </apex:column>
+   <apex:column > <apex:inputField value="{!a.firstname}"/> </apex:column>
+   <apex:column >  <apex:inputField value="{!a.email}"/></apex:column>
+   <apex:column ><apex:inputCheckbox /></apex:column>
+   
+ 
+ </apex:pageBlockTable>
+ <apex:pageBlockButtons >
+            <apex:commandButton value="Add row" action="{!addrow}" reRender="addtable"/>
+            <apex:commandButton value="Save" action="{!save}"/>
+        </apex:pageBlockButtons>
+ 
+ 
+
+</apex:pageBlock>
+</apex:form>
+ 
+ 
+ <script>
+
+ function changeStyle(x) {
+
+        x.style.textDecoration="underline";
+    }
+    function removeLine(x) {
+        x.style.textDecoration="none";   
+   }
+
+
+
+</script>
+</apex:page>

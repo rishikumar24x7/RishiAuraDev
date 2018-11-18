@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Skill xmlns="http://soap.sforce.com/2006/04/metadata">
+    <assignments>
+        <profiles>
+            <profile>Admin</profile>
+            <profile>StandardAul</profile>
+            <profile>Cross Org Data Proxy User</profile>
+            <profile>Custom%3A Marketing Profile</profile>
+            <profile>Custom%3A Sales Profile</profile>
+            <profile>Custom%3A Support Profile</profile>
+            <profile>Force%2Ecom - App Subscription User</profile>
+            <profile>Force%2Ecom - Free User</profile>
+            <profile>Identity User</profile>
+            <profile>Standard</profile>
+            <profile>ReadOnly</profile>
+            <profile>SolutionManager</profile>
+            <profile>MarketingProfile</profile>
+            <profile>ContractManager</profile>
+            <profile>Partner App Subscription User</profile>
+            <profile>Project Manager</profile>
+            <profile>Work%2Ecom Only User</profile>
+        </profiles>
+        <users>
+            <user>u1@123.com</user>
+        </users>
+    </assignments>
+    <label>New</label>
+</Skill>

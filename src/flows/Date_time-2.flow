@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <interviewLabel>Date time {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Date time</label>
+    <processType>Flow</processType>
+    <screens>
+        <name>Date_time</name>
+        <label>Date time</label>
+        <locationX>617</locationX>
+        <locationY>117</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>Date</name>
+            <fieldText>{!$Flow.CurrentDateTime}</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+    </screens>
+    <startElementReference>Date_time</startElementReference>
+    <variables>
+        <name>nowplus1</name>
+        <dataType>DateTime</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>

@@ -1,0 +1,22 @@
+<apex:page controller="loginController" cache="true" showHeader="false">
+
+
+  <apex:form >
+      <apex:pageBlock title="Login Page" >
+          <apex:pageBlockSection title="Login to Account" columns="1">
+          <apex:pageMessages ></apex:pageMessages>
+
+              <apex:inputText label="User Id" value="{!userID}" required="true"/>
+              <apex:inputSecret label="Password" value="{!password}" required="true"/>
+              <apex:commandButton action="{!login}" title="Login" value="Login" style="text-align:center"/>
+              <img id="liveagent_button_online_57328000000Gsiu" style="display: none; border: 0px none; cursor: pointer" onclick="liveagent.startChat('57328000000Gsiu')" src="https://newlead-developer-edition.ap2.force.com/resource/1492761289000/online" /><img id="liveagent_button_offline_57328000000Gsiu" style="display: none; border: 0px none; " src="https://newlead-developer-edition.ap2.force.com/resource/1492761158000/offline" />
+        <script type="text/javascript">
+if (!window._laq) { window._laq = []; }
+window._laq.push(function(){liveagent.showWhenOnline('57328000000Gsiu', document.getElementById('liveagent_button_online_57328000000Gsiu'));
+liveagent.showWhenOffline('57328000000Gsiu', document.getElementById('liveagent_button_offline_57328000000Gsiu'));
+});</script>
+  
+          </apex:pageBlockSection>
+      </apex:pageBlock>
+      </apex:form>
+</apex:page>

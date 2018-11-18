@@ -1,0 +1,70 @@
+<apex:page controller="contactController">
+
+  <apex:IncludeScript value="//code.jquery.com/jquery-1.10.2.js"/>
+  <apex:IncludeScript value="//code.jquery.com/ui/1.11.4/jquery-ui.js"/>
+  
+  <apex:stylesheet value="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+    $("#tabs").tabs();
+    $( "#age").tooltip();
+     $( "#menu" ).menu();
+});
+    
+    function openContact(id){
+    alert(id);
+    window.Location="https://ap2.salesforce.com/setup/forcecomHomepage.apexp?setupid=ForceCom&retURL=%2Fapex%2FTabExample%3Fcore.apexpages.devmode.url%3D1";
+    
+    
+    }
+    
+    function next(){
+    var activetab = $( "#tabs" ).tabs( "option", "active" );
+    
+    $( "#tabs" ).tabs( "option", "active", activetab+1 );
+    
+    }
+    function previous(){
+    var activetab = $( "#tabs" ).tabs( "option", "active" );
+    
+    $( "#tabs" ).tabs( "option", "active", activetab-1 );
+    
+    }
+</script>
+
+<style>
+.ui-menu { width: 250px; }
+</style>
+<div id="tabs">
+    <ul>
+        <li><a href="#tabs-1">Tab 1</a></li>
+        <li><a href="#tabs-2">Navigation</a></li>
+        <li><a href="#tabs-3">Tab 3</a></li>
+    </ul>
+    <div id="tabs-1">
+    <label for="age">Your age:</label><input id="age" title="Enter your Age."></input>
+        
+    </div>
+    <div id="tabs-2">
+      <ul id="menu">
+      <apex:repeat value="{!lstAccount}" var="Account" >
+         <li> {!Account.name} 
+             <ul>
+                 <apex:repeat value="{!Account.Contacts}" var="Contacts" >
+                 <li>
+                 <a href="https://ap2.salesforce.com/{!Contacts.ID}"><u>{!Contacts.name}</u></a>
+                 </li>
+                 </apex:repeat>
+              </ul>
+         </li>
+      </apex:repeat>
+      </ul>
+    </div>
+    <div id="tabs-3">
+        Tab 3
+    </div>
+</div>
+<button onclick="previous()" >Previous</button>  
+<button onclick="next()" >Next</button>  
+</apex:page>

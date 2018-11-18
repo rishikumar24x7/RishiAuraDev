@@ -1,0 +1,31 @@
+<apex:page id="thePage" sidebar="false">   
+<link href="{!URLFOR($Resource.bs, 'bootstrap-3.3.5-dist/css/bootstrap.min.css')}" rel="stylesheet" media="screen"/>
+<apex:includeScript value="{!URLFOR($Resource.enqr__bs, 'js/bootstrap.min.js')}"/>
+
+<div class="well well-sm" style="width:100%;background-color:#337AB7;color:#FFFFFF;">
+<span style="font-size:40px;margin-left:20px;">ENQr - Basic </span>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading"><span style="font-weight:bold;font-size:20px;">What is ENQr? </span></div>
+  <div class="panel-body">
+Thank You for chosing ENQr. ENQr assists users to create QR Codes inside Salesforce seamlessly. This plug play application is easy to configure, creates unlimited on the go QR Codes. EnQr allows users to create Qr Codes for any field in Salesforce. Application creates Qr Code without making callouts to external application.    
+ <li style="width:100%;margin-left:2%;margin-right:20%;margin-top:1%;font-size:15px;list-style-type: none;"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> Create Qr Code for any field in salesforce seamlessly </li>
+
+    <li style="width:100%;margin-left:2%;margin-right:20%;margin-top:0%;font-size:15px;list-style-type: none;"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>  No restrictions of number of QR Codes that can be created</li>
+
+    <li style="width:100%;margin-left:2%;margin-right:20%;margin-top:0%;font-size:15px;margin-bottom:10px;list-style-type: none;"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>  Light weight component enables to create Qr Code lightning quick</li>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading"><span style="font-weight:bold;font-size:20px;">Start making QR Codes now </span></div>
+  <div class="panel-body">
+   ENQr package comes with the implementation of creating QR Code for &#39;Account&#39; object&#39;s and &#39;website&#39; field. To see the QR Code, follow the steps mentioned below. 
+<li style="width:100%;margin-left:2%;margin-right:20%;margin-top:1%;font-size:15px;list-style-type: none;"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>  Navigate to <b>Setup <span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span> Build <span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span> Customize <span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span> Account <span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span> Page Layout</b> </li>
+<li style="width:100%;margin-left:2%;margin-right:20%;margin-top:1%;font-size:15px;list-style-type: none;"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>  Click &#39;Edit&#39; in front of account where you want to display QR Code and Add Visualforce Page &#39;Website QR&#39; to layout. </li>
+<br></br>To Create QR Codes for any field on any object, Please refer to <a href="https://appexchange.salesforce.com/servlet/servlet.FileDownload?file=00P3000000Q99YzEAJ">ENQR Installation document's Additional QR Code section</a>
+  </div>
+</div>
+
+</apex:page>

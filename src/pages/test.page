@@ -1,0 +1,11 @@
+<apex:page standardController="Account">
+    <apex:outputText value="{!$CurrentPage.parameters.userInput}" />
+        <apex:outputLink value="{!URLFOR($Action.Account.New)}">
+        Create New Account
+    </apex:outputLink>
+    <!--<apex:outputText value="{!$Cache.Session}"/>-->
+    <apex:pageMessage severity="info" 
+   strength="1" 
+   summary="{!$Label.site.site_login}" />
+    
+</apex:page>
