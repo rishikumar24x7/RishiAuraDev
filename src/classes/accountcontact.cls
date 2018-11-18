@@ -1,9 +1,6 @@
-<<<<<<< HEAD
+
 //this created by rashmiritu
-=======
-//this created by ritu
-//updated by rishi
->>>>>>> 3964fff75c35005272d340269ddb82944122442f
+//updated by rishi kumar
 public class accountcontact
 {
     list<AccountWrapper> wraplist=new list<AccountWrapper>();
